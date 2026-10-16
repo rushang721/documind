@@ -3,7 +3,7 @@ import os
 from google import genai
 from google.genai import types
 
-GEN_MODEL = os.getenv("GEN_MODEL", "gemini-2.5-flash")
+GEN_MODEL = os.getenv("GEN_MODEL", "gemini-3.8-flash")
 
 SYSTEM = (
     "You answer questions about the user's documents. "
