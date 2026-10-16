@@ -1,4 +1,5 @@
 import os
+import time
 
 from google import genai
 from google.genai import types
@@ -21,9 +22,18 @@ def ask(question, hits, history, api_key):
         f"Question: {question}"
     )
     client = genai.Client(api_key=api_key)
-    res = client.models.generate_content(
-        model=GEN_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(system_instruction=SYSTEM, temperature=0.2),
-    )
-    return res.text
+    for attempt in range(3):
+        try:
+            res = client.models.generate_content(
+                model=GEN_MODEL,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=SYSTEM, temperature=0.2
+                ),
+            )
+            return res.text
+        except Exception as err:
+            busy = "503" in str(err) or "UNAVAILABLE" in str(err)
+            if not busy or attempt == 2:
+                raise
+            time.sleep(3 * (attempt + 1))
