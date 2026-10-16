@@ -5,6 +5,7 @@ from google import genai
 from google.genai import types
 
 GEN_MODEL = os.getenv("GEN_MODEL", "gemini-3.8-flash")
+MAX_TRIES = 5
 
 SYSTEM = (
     "You answer questions about the user's documents. "
@@ -22,7 +23,7 @@ def ask(question, hits, history, api_key):
         f"Question: {question}"
     )
     client = genai.Client(api_key=api_key)
-    for attempt in range(3):
+    for attempt in range(MAX_TRIES):
         try:
             res = client.models.generate_content(
                 model=GEN_MODEL,
@@ -34,6 +35,6 @@ def ask(question, hits, history, api_key):
             return res.text
         except Exception as err:
             busy = "503" in str(err) or "UNAVAILABLE" in str(err)
-            if not busy or attempt == 2:
+            if not busy or attempt == MAX_TRIES - 1:
                 raise
-            time.sleep(3 * (attempt + 1))
+            time.sleep(4 * (attempt + 1))
