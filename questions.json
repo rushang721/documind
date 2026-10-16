@@ -1,0 +1,4 @@
+[
+  {"q": "REPLACE with a question whose answer is on one page of your PDF", "page": 1},
+  {"q": "REPLACE with another question", "page": 2}
+]
