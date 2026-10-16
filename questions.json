@@ -1,4 +1,12 @@
 [
-  {"q": "REPLACE with a question whose answer is on one page of your PDF", "page": 1},
-  {"q": "REPLACE with another question", "page": 2}
+  {"q": "Which early expert system identified the molecular structure of chemical compounds?", "page": 2},
+  {"q": "Which medical system used certainty factors to handle uncertainty?", "page": 3},
+  {"q": "Which expert system was built to configure computer systems for Digital Equipment Corporation?", "page": 4},
+  {"q": "What is an example of knowledge versus skill in chess?", "page": 6},
+  {"q": "What is the explanation facility of an expert system?", "page": 8},
+  {"q": "Why are the knowledge base and the inference engine kept separate?", "page": 9},
+  {"q": "How does a system derive a new conclusion from known facts and rules?", "page": 10},
+  {"q": "What is the difference between forward chaining and backward chaining?", "page": 11},
+  {"q": "What are the common methods of knowledge representation?", "page": 13},
+  {"q": "Which kind of knowledge is restricted to authorized people, like bank or hospital records?", "page": 16}
 ]
